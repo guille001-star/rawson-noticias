@@ -88,7 +88,7 @@ button{font-family:var(--fuente-ui);cursor:pointer}
 
 /* ── Portada ── */
 .portada{display:grid;grid-template-columns:repeat(12,1fr);gap:2rem 2.2rem;padding:2rem 0 1.5rem}
-.nota-principal{grid-column:1/9}
+.nota--principal{grid-column:1/9}
 .rail{grid-column:9/13;display:flex;flex-direction:column;gap:1.4rem}
 
 .nota__foto{display:block;position:relative;overflow:hidden;border-radius:4px}
@@ -220,10 +220,47 @@ button{font-family:var(--fuente-ui);cursor:pointer}
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .js .reveal.visible{opacity:1;transform:none}
 
+/* ══ PRIMERA PLANA — hero editorial con foto de la ciudad ══ */
+.hero-fp{position:relative;overflow:hidden;min-height:clamp(420px,62vh,640px);
+  display:flex;align-items:flex-end;color:#fff;isolation:isolate}
+.hero-fp__fondo{position:absolute;inset:-8% 0;background:
+  url('https://picsum.photos/seed/rawson-playa-union-atardecer/1900/1100') center/cover no-repeat;
+  transform:scale(1.06);transition:transform 8s ease;will-change:transform;z-index:-2}
+.hero-fp:hover .hero-fp__fondo{transform:scale(1.12)}
+.hero-fp__tinta{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(105deg,rgba(10,16,24,.94) 0%,rgba(10,16,24,.72) 42%,rgba(200,16,46,.30) 100%),
+             linear-gradient(0deg,rgba(10,16,24,.96) 4%,rgba(10,16,24,0) 60%)}
+.hero-fp__interior{padding:3.4rem 1.25rem 3rem;max-width:880px}
+.hero-fp__kicker{display:flex;align-items:center;gap:.8rem;font-family:var(--fuente-ui);
+  font-weight:800;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--oro);opacity:0;transform:translateY(14px);animation:fp-subir .7s .15s forwards}
+.hero-fp__linea{width:46px;height:3px;background:var(--rojo);
+  transform:scaleX(0);transform-origin:left;animation:fp-linea .6s .5s forwards}
+.hero-fp__titulo{font-family:var(--fuente-titulo);line-height:.96;letter-spacing:-.015em;
+  font-size:clamp(2.6rem,7vw,5.4rem);margin:1rem 0 1.1rem;text-shadow:0 4px 30px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(22px);animation:fp-subir .8s .35s forwards}
+.hero-fp__bajada{font-family:var(--fuente-cuerpo);font-size:clamp(1.05rem,2vw,1.35rem);
+  line-height:1.5;max-width:54ch;opacity:0;transform:translateY(18px);animation:fp-subir .8s .55s forwards}
+.hero-fp__pie{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.8rem;
+  opacity:0;transform:translateY(16px);animation:fp-subir .8s .75s forwards}
+.hero-fp__cta{font-family:var(--fuente-ui);font-weight:800;font-size:.82rem;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--rojo);color:#fff;padding:.85rem 1.5rem;border-radius:3px;
+  box-shadow:0 10px 26px rgba(200,16,46,.4);transition:transform .25s,background .25s,box-shadow .25s}
+.hero-fp__cta:hover{background:var(--rojo-osc);transform:translateY(-3px);box-shadow:0 16px 34px rgba(200,16,46,.5)}
+.hero-fp__dateline{font-family:var(--fuente-ui);font-size:.8rem;letter-spacing:.08em;
+  text-transform:capitalize;opacity:.85}
+@keyframes fp-subir{to{opacity:1;transform:none}}
+@keyframes fp-linea{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .hero-fp__kicker,.hero-fp__titulo,.hero-fp__bajada,.hero-fp__pie{opacity:1;transform:none;animation:none}
+  .hero-fp__linea{transform:scaleX(1);animation:none}
+  .hero-fp__fondo{transition:none}
+}
+
 /* ── Responsive ── */
 @media (max-width:1080px){
   .portada{grid-template-columns:1fr}
-  .nota-principal,.rail{grid-column:auto}
+  .nota--principal,.rail{grid-column:auto}
   .rail{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
   .seccion__grid,.seccion__grid--invertido{grid-template-columns:1fr}
   .opinion__grid{grid-template-columns:1fr}

@@ -140,4 +140,27 @@
       formBoletin.reset();
     });
   }
+
+  /* ── Primera plana: dateline en vivo + parallax sutil ── */
+  (function(){
+    function pintarHero(){
+      var a=new Date(), f=document.getElementById('hero-fecha'), r=document.getElementById('hero-reloj');
+      if(f) f.textContent=a.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'});
+      if(r) r.textContent=a.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+    }
+    pintarHero(); setInterval(pintarHero,15000);
+
+    var fondo=document.getElementById('hero-fondo');
+    var ok=fondo && window.matchMedia('(min-width:761px)').matches
+          && !window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(ok){
+      var ticking=false;
+      window.addEventListener('scroll',function(){
+        if(!ticking){ window.requestAnimationFrame(function(){
+          var y=window.scrollY; if(y<window.innerHeight) fondo.style.transform='scale(1.06) translateY('+(y*0.12)+'px)';
+          ticking=false;
+        }); ticking=true; }
+      },{passive:true});
+    }
+  })();
 })();
