@@ -126,13 +126,59 @@ button{font-family:var(--fuente-ui);cursor:pointer}
 .mas-leidas a{font-family:var(--fuente-ui);font-weight:600;font-size:.9rem;line-height:1.35}
 .mas-leidas a:hover{color:var(--rojo)}
 
-/* ── Publicidad ── */
+/* ── Publicidad (slots / placeholders) ── */
 .ad{position:relative;display:grid;place-items:center;border:1px dashed var(--linea);border-radius:4px;
     background:repeating-linear-gradient(45deg,transparent 0 14px,rgba(120,120,120,.05) 14px 28px),var(--papel-2)}
 .ad::before{content:"PUBLICIDAD";position:absolute;top:.45rem;left:.7rem;font-family:var(--fuente-ui);font-weight:800;font-size:.58rem;letter-spacing:.28em;color:var(--tinta-suave)}
 .ad--leaderboard{min-height:110px;margin:1.2rem 0 2rem}
 .ad--mpu{min-height:266px;margin-top:1.2rem}
 .ad__aviso{font-family:var(--fuente-ui);font-size:.75rem;color:var(--tinta-suave);letter-spacing:.06em}
+
+/* ══ BANNER PUBLICITARIO — billboard 970×250 con campaña viva ══ */
+.banner-pub{position:relative;overflow:hidden;isolation:isolate;border-radius:6px;margin:1.6rem 0 0;
+  --bp-fondo:#0b2540; --bp-fondo2:#103a63; --bp-acento:#f2b705; --bp-claro:#eaf2fb;
+  background:linear-gradient(120deg,var(--bp-fondo) 0%,var(--bp-fondo2) 60%,#0a1f38 100%);
+  color:var(--bp-claro);box-shadow:0 16px 40px rgba(8,20,35,.28);
+  transition:transform .35s ease,box-shadow .35s ease}
+.banner-pub:hover{transform:translateY(-3px);box-shadow:0 22px 52px rgba(8,20,35,.4)}
+.banner-pub__sello{position:absolute;top:.6rem;left:.7rem;z-index:3;font-family:var(--fuente-ui);
+  font-weight:800;font-size:.56rem;letter-spacing:.3em;color:rgba(234,242,251,.62);
+  background:rgba(0,0,0,.3);padding:.25rem .55rem;border-radius:3px}
+/* brillo que barre el banner (shimmer) */
+.banner-pub::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.16) 48%,transparent 66%);
+  transform:translateX(-120%);animation:bp-shimmer 6.5s ease-in-out 1.5s infinite}
+@keyframes bp-shimmer{0%{transform:translateX(-120%)}42%,100%{transform:translateX(120%)}}
+.banner-pub__grid{position:relative;z-index:1;display:grid;grid-template-columns:300px 1fr;align-items:stretch;min-height:230px}
+/* visual de marca */
+.banner-pub__visual{position:relative;overflow:hidden;display:grid;place-items:center;padding:1.4rem;
+  background:radial-gradient(120% 120% at 80% 20%,rgba(242,183,5,.22),transparent 55%)}
+.banner-pub__sol{position:absolute;right:-46px;top:-46px;width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--bp-acento),#c98e00 70%);
+  box-shadow:0 0 60px rgba(242,183,5,.45);opacity:.92}
+.banner-pub__lineas{position:absolute;inset:0;opacity:.16;
+  background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.5) 22px 24px)}
+.banner-pub__logo{position:relative;z-index:1;text-align:center}
+.banner-pub__logo b{display:block;font-family:var(--fuente-titulo);font-size:1.5rem;letter-spacing:.02em;line-height:1;color:#fff}
+.banner-pub__logo span{display:block;font-family:var(--fuente-ui);font-weight:700;font-size:.62rem;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--bp-acento);margin-top:.45rem}
+/* copy del anuncio */
+.banner-pub__copy{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;
+  gap:.5rem;padding:1.6rem 1.8rem}
+.banner-pub__kicker{font-family:var(--fuente-ui);font-weight:800;font-size:.66rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--bp-acento)}
+.banner-pub__titulo{font-family:var(--fuente-titulo);font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.02;
+  color:#fff;letter-spacing:-.01em}
+.banner-pub__titulo em{font-style:normal;color:var(--bp-acento)}
+.banner-pub__bajada{font-family:var(--fuente-ui);font-size:.95rem;color:rgba(234,242,251,.82);max-width:46ch}
+.banner-pub__fila{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;margin-top:.4rem}
+.banner-pub__cta{font-family:var(--fuente-ui);font-weight:800;font-size:.8rem;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--bp-acento);color:#0b2540;padding:.7rem 1.3rem;border-radius:3px;
+  display:inline-flex;align-items:center;gap:.5rem;transition:transform .25s,box-shadow .25s,background .25s}
+.banner-pub__cta:hover{transform:translateX(4px);box-shadow:0 8px 22px rgba(242,183,5,.4);background:#ffd24a}
+.banner-pub__cta .flecha{transition:transform .25s}
+.banner-pub__cta:hover .flecha{transform:translateX(4px)}
+.banner-pub__micro{font-family:var(--fuente-ui);font-size:.72rem;letter-spacing:.06em;color:rgba(234,242,251,.6)}
 
 /* ── Secciones ── */
 .seccion{padding:1.6rem 0 2.2rem}
@@ -251,11 +297,6 @@ button{font-family:var(--fuente-ui);cursor:pointer}
   text-transform:capitalize;opacity:.85}
 @keyframes fp-subir{to{opacity:1;transform:none}}
 @keyframes fp-linea{to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){
-  .hero-fp__kicker,.hero-fp__titulo,.hero-fp__bajada,.hero-fp__pie{opacity:1;transform:none;animation:none}
-  .hero-fp__linea{transform:scaleX(1);animation:none}
-  .hero-fp__fondo{transition:none}
-}
 
 /* ── Responsive ── */
 @media (max-width:1080px){
@@ -278,10 +319,18 @@ button{font-family:var(--fuente-ui);cursor:pointer}
   .masthead__interior{justify-content:center;text-align:center}
   .clima{width:100%;justify-content:center}
 }
+/* banner publicitario en móvil */
+@media (max-width:720px){
+  .banner-pub__grid{grid-template-columns:1fr;min-height:0}
+  .banner-pub__visual{padding:1.6rem 1rem;min-height:118px}
+  .banner-pub__sol{width:130px;height:130px;right:-30px;top:-30px}
+  .banner-pub__copy{padding:1.2rem 1.2rem 1.4rem}
+  .banner-pub__titulo{font-size:clamp(1.4rem,6vw,1.9rem)}
+}
 
 /* ── Impresión (estilo edición papel) ── */
 @media print{
-  .topbar,.nav,.ticker,.ad,.boletin,.volver-arriba,.compartir,.footer__legal{display:none!important}
+  .topbar,.nav,.ticker,.ad,.banner-pub,.boletin,.volver-arriba,.compartir,.footer__legal{display:none!important}
   body{background:#fff;color:#000}
   .nota__titulo a{background:none}
 }
@@ -291,4 +340,5 @@ button{font-family:var(--fuente-ui);cursor:pointer}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none}
+  .banner-pub::after{display:none}
 }
