@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Faro de Rawson — Noticias de la capital del Chubut</title>
+  <meta name="description" content="Noticias de Rawson, Chubut: política provincial, puerto, policiales, deportes y cultura. Periodismo desde la capital provincial.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c8102e'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='32' font-weight='bold' text-anchor='middle' fill='white'%3EEF%3C/text%3E%3C/svg%3E">
+
+  <!-- Tipografías: Archivo (titulares, fundición argentina) + Source Serif 4 (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Archivo+Black&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Tema antes de pintar la página (evita parpadeo) -->
+  <script>
+    (function(){var t=localStorage.getItem('tema');
+      if(t) document.documentElement.dataset.tema=t;
+      else if(matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.tema='oscuro';
+    })();
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Datos estructurados para Google Noticias -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"NewsMediaOrganization",
+   "name":"El Faro de Rawson","areaServed":"Rawson, Chubut, Argentina"}
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ══════════ BARRA SUPERIOR: fecha, hora y dólar en vivo ══════════ -->
+<div class="topbar">
+  <div class="contenedor topbar__interior">
+    <p class="topbar__fecha">
+      <span id="fecha">—</span> · <span id="reloj">—</span> · Rawson, Chubut
+    </p>
+    <p class="dolar" id="dolar" hidden>
+      <span class="dolar__item">Dólar oficial <strong id="dolar-oficial">—</strong></span>
+      <span class="dolar__item">Dólar blue <strong id="dolar-blue">—</strong></span>
+    </p>
+  </div>
+</div>
+
+<!-- ══════════ CABECERA ══════════ -->
+<header class="masthead">
+  <div class="contenedor masthead__interior">
+    <div class="masthead__marca">
+      <h1 class="marca-nombre">EL FARO<span class="marca-de"> de Rawson</span></h1>
+      <p class="marca-tagline">Periodismo desde la capital del Chubut · Sábado 1.º de agosto de 2026</p>
+    </div>
+
+    <!-- Clima en vivo de Rawson (Open-Meteo, sin clave) -->
+    <div class="clima" id="clima" aria-live="polite">
+      <span class="clima__icono" id="clima-icono">🌡️</span>
+      <div class="clima__datos">
+        <strong id="clima-temp">—°</strong>
+        <span id="clima-desc">Rawson, Chubut</span>
+        <small id="clima-viento">Viento: — km/h</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ NAVEGACIÓN (queda fija al bajar) ══════════ -->
+<nav class="nav" id="nav" aria-label="Secciones">
+  <div class="contenedor nav__interior">
+    <button class="nav__menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links">☰ <span>Secciones</span></button>
+    <ul class="nav__links" id="nav-links">
+      <li><a class="nav__link activa" href="index.html">Portada</a></li>
+      <li><a class="nav__link" href="#politica">Política</a></li>
+      <li><a class="nav__link" href="#policiales">Policiales</a></li>
+      <li><a class="nav__link" href="#economia">Economía y Puerto</a></li>
+      <li><a class="nav__link" href="#deportes">Deportes</a></li>
+      <li><a class="nav__link" href="#cultura">Cultura</a></li>
+      <li><a class="nav__link" href="#opinion">Opinión</a></li>
+      <li><a class="nav__link" href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav__acciones">
+      <form class="buscador" id="form-buscar" role="search">
+        <input id="input-buscar" type="search" placeholder="Buscar noticias…" aria-label="Buscar en el sitio">
+      </form>
+      <button class="nav__icono" id="btn-buscar" aria-label="Abrir buscador">🔍</button>
+      <button class="nav__icono" id="btn-tema" aria-label="Cambiar entre modo claro y oscuro">☾</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ CINTA DE ÚLTIMO MOMENTO ══════════ -->
+<div class="ticker" aria-label="Últimas noticias">
+  <span class="ticker__badge">ÚLTIMO MOMENTO</span>
+  <div class="ticker__vista">
+    <div class="ticker__pista" id="ticker-pista">
+      <span class="ticker__item">Rige alerta amarilla por vientos fuertes para la costa del Chubut</span>
+      <span class="ticker__item">La Legislatura comienza el tratamiento del presupuesto provincial 2027</span>
+      <span class="ticker__item">El puerto de Rawson superó las 45 mil toneladas de langostino en el semestre</span>
+      <span class="ticker__item">La ciudad prepara los festejos por su 161.° aniversario</span>
+    </div>
+  </div>
+</div>
+
+<main class="contenedor" id="contenido">
+
+  <!-- ✏️ CONTENIDO DE EJEMPLO: reemplazá títulos, bajadas, firmas y fotos por noticias reales.
+       Las fotos son provisorias (picsum.photos): bajá las reales a assets/img/ y cambiá las rutas. -->
+
+  <!-- ══════════ PORTADA: nota principal + columna lateral ══════════ -->
+  <section class="portada reveal">
+    <article class="nota nota--principal">
+      <a class="nota__foto" href="articulos/plantilla.html">
+        <img src="https://picsum.photos/seed/legislatura-chubut/1200/700" alt="Fachada de la Legislatura del Chubut en Rawson" loading="eager">
+        <span class="nota__tag">POLÍTICA</span>
+      </a>
+      <h2 class="nota__titulo nota__titulo--grande">
+        <a href="articulos/plantilla.html">Presupuesto 2027: la Legislatura abre el debate con un fuerte reclamo por obras para Rawson</a>
+      </h2>
+      <p class="bajada">El proyecto del Ejecutivo provincial prevé un aumento del 38 % en obra pública. Los bloques de la costa exigen garantizar partidas para el puerto, la repavimentación de la Ruta 7 y la ampliación del hospital.</p>
+      <p class="byline">Por <strong>Redacción El Faro</strong> · Rawson · <time datetime="2026-07-31T21:40-03:00">31 de julio de 2026, 21:40</time></p>
+    </article>
+
+    <aside class="rail">
+      <article class="nota nota--mini reveal">
+        <span class="volanta v-provincia">PROVINCIA</span>
+        <h3 class="nota__titulo"><a href="articulos/plantilla.html">El gobernador anunció la puesta en valor de los edificios históricos de la capital</a></h3>
+        <p class="bajada bajada--corta">El plan incluye refacciones en la Casa de Gobierno y la Legislatura, con fondos provinciales.</p>
+      </article>
+
+      <article class="nota nota--mini reveal">
+        <span class="volanta v-ciudad">CIUDAD</span>
+        <h3 class="nota__titulo"><a href="articulos/plantilla.html">Arrancó la repavimentación de la avenida 9 de Julio: cómo serán los desvíos</a></h3>
+        <p class="bajada bajada--corta">Los trabajos se extenderán por 60 días. Piden circular con precaución por la zona céntrica.</p>
+      </article>
+
+      <!-- ══ PUBLICIDAD ══ Rectángulo mediano 300×250 (IAB).
+           Para AdSense: reemplazá este div por tu bloque <ins class="adsbygoogle"> -->
+      <div class="ad ad--mpu" role="complementary" aria-label="Espacio publicitario">
+        <span class="ad__aviso">Espacio publicitario · 300 × 250</span>
+      </div>
+
+      <section class="mas-leidas reveal">
+        <h3 class="caja-titulo">Lo más leído</h3>
+        <ol>
+          <li><span class="num">1</span><a href="articulos/plantilla.html">Viento: recomiendan asegurar chapas y evitar la costanera hasta el sábado</a></li>
+          <li><span class="num">2</span><a href="articulos/plantilla.html">Germinal empató sobre la hora y sigue en zona de clasificación</a></li>
+          <li><span class="num">3</span><a href="articulos/plantilla.html">Ruta 7: cortes totales por obras, con desvíos señalizados</a></li>
+          <li><span class="num">4</span><a href="articulos/plantilla.html">La Fiesta del Langostino confirmó fecha y artistas para septiembre</a></li>
+          <li><span class="num">5</span><a href="articulos/plantilla.html">Cortes de agua programados en Playa Unión: el cronograma</a></li>
+        </ol>
+      </section>
+    </aside>
+  </section>
+
+  <!-- ══ PUBLICIDAD ══ Leaderboard 970×90 (IAB) -->
+  <div class="ad ad--leaderboard reveal" role="complementary" aria-label="Espacio publicitario">
+    <span class="ad__aviso">Espacio publicitario · 970 × 90</span>
+  </div>
+
+  <!-- ══════════ POLÍTICA ══════════ -->
+  <section class="seccion reveal" id="politica">
+    <header class="seccion__encabezado">
+      <h2>Política</h2>
+      <span class="seccion__dato">Casa de Gobierno · Legislatura · Concejo</span>
+    </header>
+    <div class="seccion__grid">
+      <article class="nota reveal">
+        <a class="nota__foto" href="articulos/plantilla.html">
+          <img src="https://picsum.photos/seed/presupuesto-chubut/900/560" alt="Sesión en la Legislatura del Chubut" loading="lazy">
+        </a>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Qué obras prevé el presupuesto 2027 para la capital provincial</a></h3>
+        <p class="bajada">Puerto, rutas, cloacas y el nuevo edificio del Registro Civil, entre los proyectos con financiamiento confirmado.</p>
+        <p class="byline"><time datetime="2026-07-31">31 de julio de 2026</time></p>
+      </article>
+      <div class="lista-reglada">
+        <article class="nota nota--lista reveal">
+          <span class="volanta">LEGISLATURA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Diputados citarán a funcionarios por el estado de la Ruta 7</a></h3>
+          <p class="bajada bajada--corta">La comisión de Obras Públicas pidió informes sobre los tramos más deteriorados del corredor costero.</p>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta">CONCEJO</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Aprobaron un registro de alquileres temporarios turísticos</a></h3>
+          <p class="bajada bajada--corta">La ordenanza busca ordenar la oferta de cara a la temporada de verano en Playa Unión.</p>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta">PROVINCIA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Rawson recibirá fondos del programa nacional de infraestructura escolar</a></h3>
+          <p class="bajada bajada--corta">Serán tres los edificios refaccionados antes del inicio del ciclo lectivo 2027.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ECONOMÍA Y PUERTO ══════════ -->
+  <section class="seccion reveal" id="economia">
+    <header class="seccion__encabezado">
+      <h2>Economía y Puerto</h2>
+      <span class="seccion__dato">Langostino · Flota · Trabajo</span>
+    </header>
+    <div class="seccion__grid seccion__grid--invertido">
+      <div class="lista-reglada">
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-economia">PESCA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La flota amarilla sostiene 1.200 puestos de trabajo en temporada alta</a></h3>
+          <p class="bajada bajada--corta">El movimiento del muelle tracciona empleo en frigoríficos, talleres y transporte.</p>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-economia">MERCADOS</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Buscan certificar el langostino chubutense con sello de sustentabilidad</a></h3>
+          <p class="bajada bajada--corta">La distinción abriría mercados en Europa y Asia, donde pagan mejor el producto.</p>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-economia">COMERCIO</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">El centro comercial pide extender el estacionamiento medido al verano</a></h3>
+          <p class="bajada bajada--corta">Los comerciantes plantean que el sistema ordena la circulación en meses de alta demanda.</p>
+        </article>
+      </div>
+      <article class="nota reveal">
+        <a class="nota__foto" href="articulos/plantilla.html">
+          <img src="https://picsum.photos/seed/puerto-rawson-langostino/900/560" alt="Barcos pesqueros amarrados en el puerto de Rawson" loading="lazy">
+        </a>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">El langostino cerró el mejor semestre de descargas en una década</a></h3>
+        <p class="bajada">Las operaciones en el puerto local crecieron 22 % interanual. Los armadores destacan el precio internacional y piden más días de marea.</p>
+        <p class="byline"><time datetime="2026-07-30">30 de julio de 2026</time></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ POLICIALES ══════════ -->
+  <section class="seccion reveal" id="policiales">
+    <header class="seccion__encabezado">
+      <h2>Policiales</h2>
+      <span class="seccion__dato">Seguridad · Tránsito · Judiciales</span>
+    </header>
+    <div class="policiales">
+      <article class="nota nota--policial reveal">
+        <span class="hora">22:10</span>
+        <div>
+          <span class="volanta v-policiales">OPERATIVO</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Saturación en el centro: 12 demorados y motos secuestradas</a></h3>
+        </div>
+      </article>
+      <article class="nota nota--policial reveal">
+        <span class="hora">19:45</span>
+        <div>
+          <span class="volanta v-policiales">RUTA 25</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Choque en cadena: no se registraron heridos de gravedad</a></h3>
+        </div>
+      </article>
+      <article class="nota nota--policial reveal">
+        <span class="hora">17:20</span>
+        <div>
+          <span class="volanta v-policiales">CIBERDELITO</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Advierten por estafas con falsos turnos del Registro Civil</a></h3>
+        </div>
+      </article>
+      <article class="nota nota--policial reveal">
+        <span class="hora">15:05</span>
+        <div>
+          <span class="volanta v-policiales">PREVENCIÓN</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Sumarán cámaras de seguridad en los accesos a Playa Unión</a></h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ OPINIÓN ══════════ -->
+  <section class="opinion reveal" id="opinion">
+    <div class="contenedor">
+      <header class="seccion__encabezado seccion__encabezado--claro">
+        <h2>Opinión</h2>
+        <span class="seccion__dato">Editoriales y columnas</span>
+      </header>
+      <div class="opinion__grid">
+        <article class="opinion__nota reveal">
+          <span class="opinion__tipo">EDITORIAL</span>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">La capital que se viene</a></h3>
+          <p class="opinion__cita">“Rawson necesita una planificación urbana que acompañe su crecimiento y su rol político provincial.”</p>
+          <p class="opinion__firma">— El Faro</p>
+        </article>
+        <article class="opinion__nota reveal">
+          <span class="opinion__tipo">COLUMNA</span>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">El puerto como motor</a></h3>
+          <p class="opinion__cita">“Cada tonelada de langostino que se descarga acá es trabajo chubutense. La discusión es cómo agregar valor en tierra.”</p>
+          <p class="opinion__firma">— M. Millanao</p>
+        </article>
+        <article class="opinion__nota reveal">
+          <span class="opinion__tipo">COLUMNA</span>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">Viento a favor</a></h3>
+          <p class="opinion__cita">“La agenda ambiental llegó para quedarse; la pregunta es si la política está a la altura del Atlántico.”</p>
+          <p class="opinion__firma">— C. Espinosa</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DEPORTES + PUBLICIDAD ══════════ -->
+  <section class="seccion reveal" id="deportes">
+    <header class="seccion__encabezado">
+      <h2>Deportes</h2>
+      <span class="seccion__dato">Germinal · Liga del Valle · Amateur</span>
+    </header>
+    <div class="seccion__grid">
+      <article class="nota reveal">
+        <a class="nota__foto" href="articulos/plantilla.html">
+          <img src="https://picsum.photos/seed/germinal-futbol/900/560" alt="Jugadores de Germinal celebran un gol" loading="lazy">
+          <span class="marcador">2 – 2</span>
+        </a>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Germinal rescató un empate en el descuento y sigue prendido arriba</a></h3>
+        <p class="bajada">El Verdiblanco igualó como visitante y estiró su racha a seis partidos sin derrotas en el Federal.</p>
+        <p class="byline"><time datetime="2026-07-31">31 de julio de 2026</time></p>
+      </article>
+      <div>
+        <div class="lista-reglada">
+          <article class="nota nota--lista reveal">
+            <span class="volanta v-deportes">FÚTBOL</span>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Liga del Valle sorteó el fixture del torneo Clausura</a></h3>
+          </article>
+          <article class="nota nota--lista reveal">
+            <span class="volanta v-deportes">HOCKEY</span>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Las Lobas se quedaron con el provincial Sub-16</a></h3>
+          </article>
+          <article class="nota nota--lista reveal">
+            <span class="volanta v-deportes">ATLETISMO</span>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Valentina Aguirre clasificó al Nacional U18</a></h3>
+          </article>
+        </div>
+        <!-- ══ PUBLICIDAD ══ Rectángulo 300×250 -->
+        <div class="ad ad--mpu reveal" role="complementary" aria-label="Espacio publicitario">
+          <span class="ad__aviso">Espacio publicitario · 300 × 250</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CULTURA Y TURISMO ══════════ -->
+  <section class="seccion reveal" id="cultura">
+    <header class="seccion__encabezado">
+      <h2>Cultura y Turismo</h2>
+      <span class="seccion__dato">Agenda · Playa Unión · Patrimonio</span>
+    </header>
+    <div class="seccion__grid seccion__grid--invertido">
+      <div class="lista-reglada">
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-cultura">AGENDA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Casa de la Cultura presentó agosto: cine, tango y feria del libro</a></h3>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-cultura">PATRIMONIO</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">El Museo de la Ciudad suma visitas guiadas por el mes del aniversario</a></h3>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta v-cultura">PLAYA UNIÓN</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Habilitaron nuevos miradores costeros en el camino a la playa</a></h3>
+        </article>
+      </div>
+      <article class="nota reveal">
+        <a class="nota__foto" href="articulos/plantilla.html">
+          <img src="https://picsum.photos/seed/casa-cultura-rawson/900/560" alt="Fachada de la Casa de la Cultura de Rawson" loading="lazy">
+        </a>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Rawson afina los preparativos para su 161.° aniversario</a></h3>
+        <p class="bajada">El municipio prepara el acto central del 15 de septiembre y una semana de actividades abiertas a toda la comunidad.</p>
+        <p class="byline"><time datetime="2026-07-29">29 de julio de 2026</time></p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ PIE ══════════ -->
+<footer class="footer" id="contacto">
+  <div class="contenedor footer__grid">
+    <div class="footer__col footer__col--marca">
+      <p class="footer__nombre">EL FARO<span> de Rawson</span></p>
+      <p>Medio digital dedicado a la actualidad de la capital del Chubut: política provincial, puerto, deportes y cultura.</p>
+      <form class="boletin" id="form-boletin">
+        <label for="boletin-mail">Recibí el resumen diario en tu correo</label>
+        <div class="boletin__fila">
+          <input id="boletin-mail" type="email" required placeholder="tu@correo.com">
+          <button type="submit">Suscribirme</button>
+        </div>
+        <p class="boletin__msg" id="boletin-msg" role="status"></p>
+      </form>
+    </div>
+    <nav class="footer__col" aria-label="Secciones del pie">
+      <h3>Secciones</h3>
+      <ul>
+        <li><a href="#politica">Política</a></li>
+        <li><a href="#policiales">Policiales</a></li>
+        <li><a href="#economia">Economía y Puerto</a></li>
+        <li><a href="#deportes">Deportes</a></li>
+        <li><a href="#cultura">Cultura y Turismo</a></li>
+      </ul>
+    </nav>
+    <div class="footer__col">
+      <h3>Instituciones</h3>
+      <ul>
+        <li><a href="https://www.chubut.gov.ar" target="_blank" rel="noopener">Gobierno del Chubut</a></li>
+        <li><a href="https://legislaturachubut.gov.ar" target="_blank" rel="noopener">Legislatura del Chubut</a></li>
+        <li><a href="https://www.rawson.gov.ar" target="_blank" rel="noopener">Municipalidad de Rawson</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h3>Redacción</h3>
+      <ul>
+        <li>📍 Rawson, Chubut, Argentina</li>
+        <li>✉️ redaccion@elfaroderawson.com.ar</li>
+        <li>📱 WhatsApp: (280) 000-0000</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="contenedor">
+      <p>© <span id="anio">2026</span> El Faro de Rawson · Todos los derechos reservados · Hecho en la capital del Chubut 🇦🇷</p>
+    </div>
+  </div>
+</footer>
+
+<button class="volver-arriba" id="volver-arriba" aria-label="Volver arriba">↑</button>
+<noscript><p class="noscript">Activá JavaScript para ver la hora, el clima y la cotización en vivo.</p></noscript>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
