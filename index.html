@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Faro de Rawson — Noticias de la capital del Chubut</title>
-  <meta name="description" content="Noticias de Rawson, Chubut: política provincial, puerto, policiales, deportes y cultura. Periodismo desde la capital provincial.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c8102e'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='32' font-weight='bold' text-anchor='middle' fill='white'%3EEF%3C/text%3E%3C/svg%3E">
+  <title>El Andino del Puelo — Noticias de la Comarca Andina del Paralelo 42</title>
+  <meta name="description" content="Noticias de Lago Puelo, Chubut: Comarca Andina, turismo, producción local, deportes de montaña, cultura y vida cordillerana. Periodismo desde el bosque patagónico.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c8102e'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='32' font-weight='bold' text-anchor='middle' fill='white'%3EEA%3C/text%3E%3C/svg%3E">
 
   <!-- Tipografías: Archivo (titulares) + Source Serif 4 (cuerpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
   <!-- Datos estructurados para Google Noticias -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"NewsMediaOrganization",
-   "name":"El Faro de Rawson","areaServed":"Rawson, Chubut, Argentina"}
+   "name":"El Andino del Puelo","areaServed":"Lago Puelo, Chubut, Argentina"}
   </script>
 </head>
 <body>
@@ -36,7 +36,7 @@
 <div class="topbar">
   <div class="contenedor topbar__interior">
     <p class="topbar__fecha">
-      <span id="fecha">—</span> · <span id="reloj">—</span> · Rawson, Chubut
+      <span id="fecha">—</span> · <span id="reloj">—</span> · Lago Puelo, Chubut
     </p>
     <p class="dolar" id="dolar" hidden>
       <span class="dolar__item">Dólar oficial <strong id="dolar-oficial">—</strong></span>
@@ -49,16 +49,16 @@
 <header class="masthead">
   <div class="contenedor masthead__interior">
     <div class="masthead__marca">
-      <h1 class="marca-nombre">EL FARO<span class="marca-de"> de Rawson</span></h1>
-      <p class="marca-tagline">Periodismo desde la capital del Chubut · Sábado 1.º de agosto de 2026</p>
+      <h1 class="marca-nombre">EL ANDINO<span class="marca-de"> del Puelo</span></h1>
+      <p class="marca-tagline">Periodismo desde la Comarca Andina del Paralelo 42 · Sábado 1.º de agosto de 2026</p>
     </div>
 
-    <!-- Clima en vivo de Rawson (Open-Meteo, sin clave) -->
+    <!-- Clima en vivo de Lago Puelo (Open-Meteo, sin clave) -->
     <div class="clima" id="clima" aria-live="polite">
       <span class="clima__icono" id="clima-icono">🌡️</span>
       <div class="clima__datos">
         <strong id="clima-temp">—°</strong>
-        <span id="clima-desc">Rawson, Chubut</span>
+        <span id="clima-desc">Lago Puelo, Chubut</span>
         <small id="clima-viento">Viento: — km/h</small>
       </div>
     </div>
@@ -73,7 +73,7 @@
       <li><a class="nav__link activa" href="index.html">Portada</a></li>
       <li><a class="nav__link" href="#politica">Política</a></li>
       <li><a class="nav__link" href="#policiales">Policiales</a></li>
-      <li><a class="nav__link" href="#economia">Economía y Puerto</a></li>
+      <li><a class="nav__link" href="#produccion">Turismo y Producción</a></li>
       <li><a class="nav__link" href="#deportes">Deportes</a></li>
       <li><a class="nav__link" href="#cultura">Cultura</a></li>
       <li><a class="nav__link" href="#opinion">Opinión</a></li>
@@ -94,22 +94,22 @@
   <span class="ticker__badge">ÚLTIMO MOMENTO</span>
   <div class="ticker__vista">
     <div class="ticker__pista" id="ticker-pista">
-      <span class="ticker__item">Rige alerta amarilla por vientos fuertes para la costa del Chubut</span>
-      <span class="ticker__item">La Legislatura comienza el tratamiento del presupuesto provincial 2027</span>
-      <span class="ticker__item">El puerto de Rawson superó las 45 mil toneladas de langostino en el semestre</span>
-      <span class="ticker__item">La ciudad prepara los festejos por su 161.° aniversario</span>
+      <span class="ticker__item">Alerta por vientos fuertes y posibles nevadas en la cordillera para este fin de semana</span>
+      <span class="ticker__item">El Concejo Deliberante aprobó la ordenanza tarifaria 2027 con focus en obras para el lago</span>
+      <span class="ticker__item">Temporada alta: el Parque Nacional Lago Puelo superó los 35 mil visitantes en julio</span>
+      <span class="ticker__item">La Comarca se prepara para el aniversario de Lago Puelo cada 15 de enero</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════ PRIMERA PLANA: abre con la ciudad ══════════ -->
+<!-- ══════════ PRIMERA PLANA: abre con la cordillera ══════════ -->
 <section class="hero-fp reveal" aria-label="Primera plana">
   <div class="hero-fp__fondo" id="hero-fondo"></div>
   <div class="hero-fp__tinta"></div>
   <div class="contenedor hero-fp__interior">
-    <p class="hero-fp__kicker"><span class="hero-fp__linea"></span>Edición del día · Capital del Chubut</p>
-    <h2 class="hero-fp__titulo">Rawson, contada desde adentro</h2>
-    <p class="hero-fp__bajada">Política provincial, el pulso del puerto, la calle y la costa. Periodismo local, todos los días, desde el lugar donde se decide el Chubut.</p>
+    <p class="hero-fp__kicker"><span class="hero-fp__linea"></span>Edición del día · Comarca Andina del Paralelo 42</p>
+    <h2 class="hero-fp__titulo">Lago Puelo, contada desde adentro</h2>
+    <p class="hero-fp__bajada">Vida cordillerana, turismo, producción artesanal, el pulso del lago y el bosque. Periodismo local, todos los días, desde el corazón de la Patagonia andina.</p>
     <div class="hero-fp__pie">
       <a class="hero-fp__cta" href="#politica">Leer la portada ↓</a>
       <span class="hero-fp__dateline"><span id="hero-fecha">—</span> · <span id="hero-reloj">—</span></span>
@@ -122,21 +122,21 @@
      <a href="..."><img src="assets/img/publicidad/anunciante.jpg" alt="..."></a>
      o por el bloque <ins class="adsbygoogle"> de AdSense. El sello PUBLICIDAD se mantiene. -->
 <div class="contenedor">
-  <section class="banner-pub reveal" role="complementary" aria-label="Publicidad: Austral Motors Rawson">
+  <section class="banner-pub reveal" role="complementary" aria-label="Publicidad: Almacén del Lago">
     <span class="banner-pub__sello">PUBLICIDAD</span>
     <div class="banner-pub__grid">
       <div class="banner-pub__visual" aria-hidden="true">
         <span class="banner-pub__sol"></span>
         <span class="banner-pub__lineas"></span>
-        <p class="banner-pub__logo"><b>AUSTRAL<br>MOTORS</b><span>Rawson · Chubut</span></p>
+        <p class="banner-pub__logo"><b>ALMACÉN<br>DEL LAGO</b><span>Lago Puelo · Chubut</span></p>
       </div>
       <div class="banner-pub__copy">
-        <p class="banner-pub__kicker">Concesionario oficial · Agosto 2026</p>
-        <h2 class="banner-pub__titulo">Estrená tu 0 km con <em>tasa 0 %</em></h2>
-        <p class="banner-pub__bajada">Hasta el 31 de agosto en todas las marcas. Bonificación especial por tu usado y seguro bonificado el primer año.</p>
+        <p class="banner-pub__kicker">Productos patagónicos · Agosto 2026</p>
+        <h2 class="banner-pub__titulo">Miel, sauco y chocolate artesanal con <em>20 % off</em></h2>
+        <p class="banner-pub__bajada">Hasta el 31 de agosto. Productos de productores locales, elaborados en la Comarca Andina. Envíos a todo el país.</p>
         <div class="banner-pub__fila">
-          <a class="banner-pub__cta" href="#">Pedir turno <span class="flecha">→</span></a>
-          <span class="banner-pub__micro">Av. 9 de Julio 1234 · Rawson · (280) 448-0000</span>
+          <a class="banner-pub__cta" href="#">Ver catálogo <span class="flecha">→</span></a>
+          <span class="banner-pub__micro">Av. Los Notros s/n · Lago Puelo · (294) 449-0000</span>
         </div>
       </div>
     </div>
@@ -152,26 +152,26 @@
   <section class="portada reveal">
     <article class="nota nota--principal">
       <a class="nota__foto" href="articulos/plantilla.html">
-        <img src="https://picsum.photos/seed/legislatura-chubut/1200/700" alt="Fachada de la Legislatura del Chubut en Rawson" loading="eager">
+        <img src="https://picsum.photos/seed/lago-puelo-vista/1200/700" alt="Vista panorámica del Lago Puelo desde el mirador" loading="eager">
         <span class="nota__tag">POLÍTICA</span>
       </a>
       <h2 class="nota__titulo nota__titulo--grande">
-        <a href="articulos/plantilla.html">Presupuesto 2027: la Legislatura abre el debate con un fuerte reclamo por obras para Rawson</a>
+        <a href="articulos/plantilla.html">Ordenanza tarifaria 2027: el Concejo abre el debate con fuerte reclamo por obras en el acceso al lago</a>
       </h2>
-      <p class="bajada">El proyecto del Ejecutivo provincial prevé un aumento del 38 % en obra pública. Los bloques de la costa exigen garantizar partidas para el puerto, la repavimentación de la Ruta 7 y la ampliación del hospital.</p>
-      <p class="byline">Por <strong>Redacción El Faro</strong> · Rawson · <time datetime="2026-07-31T21:40-03:00">31 de julio de 2026, 21:40</time></p>
+      <p class="bajada">El proyecto municipal prevé un aumento del 38 % en obra pública. Los vecinos piden garantizar partidas para el ripio de la Ruta 16, la red de agua en Los Radales y la ampliación del centro de salud.</p>
+      <p class="byline">Por <strong>Redacción El Andino</strong> · Lago Puelo · <time datetime="2026-07-31T21:40-03:00">31 de julio de 2026, 21:40</time></p>
     </article>
 
     <aside class="rail">
       <article class="nota nota--mini reveal">
-        <span class="volanta v-provincia">PROVINCIA</span>
-        <h3 class="nota__titulo"><a href="articulos/plantilla.html">El gobernador anunció la puesta en valor de los edificios históricos de la capital</a></h3>
-        <p class="bajada bajada--corta">El plan incluye refacciones en la Casa de Gobierno y la Legislatura, con fondos provinciales.</p>
+        <span class="volanta v-provincia">COMARCA</span>
+        <h3 class="nota__titulo"><a href="articulos/plantilla.html">El gobernador anunció obras de infraestructura para la Comarca Andina</a></h3>
+        <p class="bajada bajada--corta">El plan incluye redes de agua para El Hoyo y Epuyén, con fondos provinciales.</p>
       </article>
 
       <article class="nota nota--mini reveal">
         <span class="volanta v-ciudad">CIUDAD</span>
-        <h3 class="nota__titulo"><a href="articulos/plantilla.html">Arrancó la repavimentación de la avenida 9 de Julio: cómo serán los desvíos</a></h3>
+        <h3 class="nota__titulo"><a href="articulos/plantilla.html">Arrancó la repavimentación de la avenida Los Notros: cómo serán los desvíos</a></h3>
         <p class="bajada bajada--corta">Los trabajos se extenderán por 60 días. Piden circular con precaución por la zona céntrica.</p>
       </article>
 
@@ -183,11 +183,11 @@
       <section class="mas-leidas reveal">
         <h3 class="caja-titulo">Lo más leído</h3>
         <ol>
-          <li><span class="num">1</span><a href="articulos/plantilla.html">Viento: recomiendan asegurar chapas y evitar la costanera hasta el sábado</a></li>
-          <li><span class="num">2</span><a href="articulos/plantilla.html">Germinal empató sobre la hora y sigue en zona de clasificación</a></li>
-          <li><span class="num">3</span><a href="articulos/plantilla.html">Ruta 7: cortes totales por obras, con desvíos señalizados</a></li>
-          <li><span class="num">4</span><a href="articulos/plantilla.html">La Fiesta del Langostino confirmó fecha y artistas para septiembre</a></li>
-          <li><span class="num">5</span><a href="articulos/plantilla.html">Cortes de agua programados en Playa Unión: el cronograma</a></li>
+          <li><span class="num">1</span><a href="articulos/plantilla.html">Vientos y nevadas: recomiendan no salir a rutas cordilleranas hasta el domingo</a></li>
+          <li><span class="num">2</span><a href="articulos/plantilla.html">El Club Lago Puelo ganó sobre la hora y sueña con el ascenso</a></li>
+          <li><span class="num">3</span><a href="articulos/plantilla.html">Ruta 16: cortes totales por obras, con desvíos señalizados hasta El Bolsón</a></li>
+          <li><span class="num">4</span><a href="articulos/plantilla.html">La Fiesta Nacional del Lago confirmó fecha y artistas para enero</a></li>
+          <li><span class="num">5</span><a href="articulos/plantilla.html">Cortes de agua programados en Los Radales: el cronograma</a></li>
         </ol>
       </section>
     </aside>
@@ -202,67 +202,67 @@
   <section class="seccion reveal" id="politica">
     <header class="seccion__encabezado">
       <h2>Política</h2>
-      <span class="seccion__dato">Casa de Gobierno · Legislatura · Concejo</span>
+      <span class="seccion__dato">Comuna · Concejo Deliberante · Comarca Andina</span>
     </header>
     <div class="seccion__grid">
       <article class="nota reveal">
         <a class="nota__foto" href="articulos/plantilla.html">
-          <img src="https://picsum.photos/seed/presupuesto-chubut/900/560" alt="Sesión en la Legislatura del Chubut" loading="lazy">
+          <img src="https://picsum.photos/seed/concejo-puelo/900/560" alt="Sesión del Concejo Deliberante de Lago Puelo" loading="lazy">
         </a>
-        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Qué obras prevé el presupuesto 2027 para la capital provincial</a></h3>
-        <p class="bajada">Puerto, rutas, cloacas y el nuevo edificio del Registro Civil, entre los proyectos con financiamiento confirmado.</p>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Qué obras prevé el presupuesto 2027 para Lago Puelo y la Comarca</a></h3>
+        <p class="bajada">Ripio, redes de agua, cloacas y el nuevo edificio del Centro Cívico, entre los proyectos con financiamiento confirmado.</p>
         <p class="byline"><time datetime="2026-07-31">31 de julio de 2026</time></p>
       </article>
       <div class="lista-reglada">
         <article class="nota nota--lista reveal">
-          <span class="volanta">LEGISLATURA</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Diputados citarán a funcionarios por el estado de la Ruta 7</a></h3>
-          <p class="bajada bajada--corta">La comisión de Obras Públicas pidió informes sobre los tramos más deteriorados del corredor costero.</p>
-        </article>
-        <article class="nota nota--lista reveal">
           <span class="volanta">CONCEJO</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Aprobaron un registro de alquileres temporarios turísticos</a></h3>
-          <p class="bajada bajada--corta">La ordenanza busca ordenar la oferta de cara a la temporada de verano en Playa Unión.</p>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Concejales citarán a funcionarios por el estado de la Ruta 16</a></h3>
+          <p class="bajada bajada--corta">La comisión de Obras Públicas pidió informes sobre los tramos más deteriorados del acceso a la cordillera.</p>
         </article>
         <article class="nota nota--lista reveal">
-          <span class="volanta">PROVINCIA</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Rawson recibirá fondos del programa nacional de infraestructura escolar</a></h3>
+          <span class="volanta">ORDENANZA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Aprobaron un registro de alquileres temporarios turísticos</a></h3>
+          <p class="bajada bajada--corta">La ordenanza busca ordenar la oferta de cabañas y departamentos de cara a la temporada de verano.</p>
+        </article>
+        <article class="nota nota--lista reveal">
+          <span class="volanta">COMARCA</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Lago Puelo recibirá fondos del programa nacional de infraestructura escolar</a></h3>
           <p class="bajada bajada--corta">Serán tres los edificios refaccionados antes del inicio del ciclo lectivo 2027.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ ECONOMÍA Y PUERTO ══════════ -->
-  <section class="seccion reveal" id="economia">
+  <!-- ══════════ TURISMO Y PRODUCCIÓN LOCAL ══════════ -->
+  <section class="seccion reveal" id="produccion">
     <header class="seccion__encabezado">
-      <h2>Economía y Puerto</h2>
-      <span class="seccion__dato">Langostino · Flota · Trabajo</span>
+      <h2>Turismo y Producción Local</h2>
+      <span class="seccion__dato">Lago · Miel · Cerveza · Sauco · Artesanías</span>
     </header>
     <div class="seccion__grid seccion__grid--invertido">
       <div class="lista-reglada">
         <article class="nota nota--lista reveal">
-          <span class="volanta v-economia">PESCA</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La flota amarilla sostiene 1.200 puestos de trabajo en temporada alta</a></h3>
-          <p class="bajada bajada--corta">El movimiento del muelle tracciona empleo en frigoríficos, talleres y transporte.</p>
+          <span class="volanta v-economia">PRODUCCIÓN</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La producción de miel y sauco sostiene a más de 80 familias de la Comarca</a></h3>
+          <p class="bajada bajada--corta">El trabajo artesanal y agroecológico tracciona la economía local y abre mercados en todo el país.</p>
         </article>
         <article class="nota nota--lista reveal">
-          <span class="volanta v-economia">MERCADOS</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Buscan certificar el langostino chubutense con sello de sustentabilidad</a></h3>
-          <p class="bajada bajada--corta">La distinción abriría mercados en Europa y Asia, donde pagan mejor el producto.</p>
+          <span class="volanta v-economia">SELLO LOCAL</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Buscan certificar el jarabe de sauco patagónico con sello de origen</a></h3>
+          <p class="bajada bajada--corta">La distinción abriría mercados premium en Buenos Aires y el exterior, donde pagan mejor el producto artesanal.</p>
         </article>
         <article class="nota nota--lista reveal">
           <span class="volanta v-economia">COMERCIO</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">El centro comercial pide extender el estacionamiento medido al verano</a></h3>
-          <p class="bajada bajada--corta">Los comerciantes plantean que el sistema ordena la circulación en meses de alta demanda.</p>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Feria de Productores pide más días y un espacio techado permanente</a></h3>
+          <p class="bajada bajada--corta">Los productores plantean que el sistema actual limita el crecimiento frente a la demanda de turistas y vecinos.</p>
         </article>
       </div>
       <article class="nota reveal">
         <a class="nota__foto" href="articulos/plantilla.html">
-          <img src="https://picsum.photos/seed/puerto-rawson-langostino/900/560" alt="Barcos pesqueros amarrados en el puerto de Rawson" loading="lazy">
+          <img src="https://picsum.photos/seed/puelo-parque-nacional/900/560" alt="Visitantes en el Parque Nacional Lago Puelo" loading="lazy">
         </a>
-        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">El langostino cerró el mejor semestre de descargas en una década</a></h3>
-        <p class="bajada">Las operaciones en el puerto local crecieron 22 % interanual. Los armadores destacan el precio internacional y piden más días de marea.</p>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">El Parque Nacional cerró el mejor julio de visitantes en una década</a></h3>
+        <p class="bajada">El turismo en Lago Puelo creció 22 % interanual. Los prestadores destacan el movimiento y piden más infraestructura para la temporada alta.</p>
         <p class="byline"><time datetime="2026-07-30">30 de julio de 2026</time></p>
       </article>
     </div>
@@ -279,28 +279,28 @@
         <span class="hora">22:10</span>
         <div>
           <span class="volanta v-policiales">OPERATIVO</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Saturación en el centro: 12 demorados y motos secuestradas</a></h3>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Saturación en el centro: controles de alcoholemia y documentación</a></h3>
         </div>
       </article>
       <article class="nota nota--policial reveal">
         <span class="hora">19:45</span>
         <div>
-          <span class="volanta v-policiales">RUTA 25</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Choque en cadena: no se registraron heridos de gravedad</a></h3>
+          <span class="volanta v-policiales">RUTA 16</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Choque en cadena por hielo en la ruta: no hubo heridos de gravedad</a></h3>
         </div>
       </article>
       <article class="nota nota--policial reveal">
         <span class="hora">17:20</span>
         <div>
           <span class="volanta v-policiales">CIBERDELITO</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Advierten por estafas con falsos turnos del Registro Civil</a></h3>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Advierten por estafas con falsos alquileres de cabañas turísticas</a></h3>
         </div>
       </article>
       <article class="nota nota--policial reveal">
         <span class="hora">15:05</span>
         <div>
           <span class="volanta v-policiales">PREVENCIÓN</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Sumarán cámaras de seguridad en los accesos a Playa Unión</a></h3>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Sumarán cámaras de seguridad en los accesos a la zona del lago</a></h3>
         </div>
       </article>
     </div>
@@ -316,20 +316,20 @@
       <div class="opinion__grid">
         <article class="opinion__nota reveal">
           <span class="opinion__tipo">EDITORIAL</span>
-          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">La capital que se viene</a></h3>
-          <p class="opinion__cita">“Rawson necesita una planificación urbana que acompañe su crecimiento y su rol político provincial.”</p>
-          <p class="opinion__firma">— El Faro</p>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">La Comarca que se viene</a></h3>
+          <p class="opinion__cita">“Lago Puelo necesita una planificación urbana que acompañe su crecimiento sin perder la identidad cordillerana.”</p>
+          <p class="opinion__firma">— El Andino</p>
         </article>
         <article class="opinion__nota reveal">
           <span class="opinion__tipo">COLUMNA</span>
-          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">El puerto como motor</a></h3>
-          <p class="opinion__cita">“Cada tonelada de langostino que se descarga acá es trabajo chubutense. La discusión es cómo agregar valor en tierra.”</p>
-          <p class="opinion__firma">— M. Millanao</p>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">El lago como motor</a></h3>
+          <p class="opinion__cita">“Cada visitante que llega al Parque Nacional es trabajo para la Comarca. La discusión es cómo sostenerlo todo el año.”</p>
+          <p class="opinion__firma">— M. Huenchumán</p>
         </article>
         <article class="opinion__nota reveal">
           <span class="opinion__tipo">COLUMNA</span>
-          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">Viento a favor</a></h3>
-          <p class="opinion__cita">“La agenda ambiental llegó para quedarse; la pregunta es si la política está a la altura del Atlántico.”</p>
+          <h3 class="opinion__titulo"><a href="articulos/plantilla.html">Bosque a favor</a></h3>
+          <p class="opinion__cita">“La agenda ambiental llegó para quedarse; la pregunta es si la política está a la altura del bosque andino patagónico.”</p>
           <p class="opinion__firma">— C. Espinosa</p>
         </article>
       </div>
@@ -340,31 +340,31 @@
   <section class="seccion reveal" id="deportes">
     <header class="seccion__encabezado">
       <h2>Deportes</h2>
-      <span class="seccion__dato">Germinal · Liga del Valle · Amateur</span>
+      <span class="seccion__dato">Club Lago Puelo · Montaña · Náutica · Amateur</span>
     </header>
     <div class="seccion__grid">
       <article class="nota reveal">
         <a class="nota__foto" href="articulos/plantilla.html">
-          <img src="https://picsum.photos/seed/germinal-futbol/900/560" alt="Jugadores de Germinal celebran un gol" loading="lazy">
-          <span class="marcador">2 – 2</span>
+          <img src="https://picsum.photos/seed/club-puelo-futbol/900/560" alt="Jugadores del Club Lago Puelo celebran un gol" loading="lazy">
+          <span class="marcador">2 – 1</span>
         </a>
-        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Germinal rescató un empate en el descuento y sigue prendido arriba</a></h3>
-        <p class="bajada">El Verdiblanco igualó como visitante y estiró su racha a seis partidos sin derrotas en el Federal.</p>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">El Club Lago Puelo rescató un triunfo sobre la hora y sueña con el ascenso</a></h3>
+        <p class="bajada">El equipo cordillerano ganó como visitante y estiró su racha a seis partidos sin derrotas en el torneo regional.</p>
         <p class="byline"><time datetime="2026-07-31">31 de julio de 2026</time></p>
       </article>
       <div>
         <div class="lista-reglada">
           <article class="nota nota--lista reveal">
-            <span class="volanta v-deportes">FÚTBOL</span>
-            <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Liga del Valle sorteó el fixture del torneo Clausura</a></h3>
+            <span class="volanta v-deportes">MONTAÑA</span>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Se largó la temporada de trekking al Cerro Radal con récord de inscriptos</a></h3>
           </article>
           <article class="nota nota--lista reveal">
-            <span class="volanta v-deportes">HOCKEY</span>
-            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Las Lobas se quedaron con el provincial Sub-16</a></h3>
+            <span class="volanta v-deportes">KAYAK</span>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Las palistas del lago se quedaron con el provincial Sub-18</a></h3>
           </article>
           <article class="nota nota--lista reveal">
             <span class="volanta v-deportes">ATLETISMO</span>
-            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Valentina Aguirre clasificó al Nacional U18</a></h3>
+            <h3 class="nota__titulo"><a href="articulos/plantilla.html">Valentina Aguirre clasificó al Nacional de Trail U18</a></h3>
           </article>
         </div>
         <!-- ══ PUBLICIDAD ══ Rectángulo 300×250 -->
@@ -379,29 +379,29 @@
   <section class="seccion reveal" id="cultura">
     <header class="seccion__encabezado">
       <h2>Cultura y Turismo</h2>
-      <span class="seccion__dato">Agenda · Playa Unión · Patrimonio</span>
+      <span class="seccion__dato">Agenda · Parque Nacional · Patrimonio cordillerano</span>
     </header>
     <div class="seccion__grid seccion__grid--invertido">
       <div class="lista-reglada">
         <article class="nota nota--lista reveal">
           <span class="volanta v-cultura">AGENDA</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Casa de la Cultura presentó agosto: cine, tango y feria del libro</a></h3>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">La Casa de la Cultura presentó agosto: cine patagónico, peña folclórica y feria artesanal</a></h3>
         </article>
         <article class="nota nota--lista reveal">
           <span class="volanta v-cultura">PATRIMONIO</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">El Museo de la Ciudad suma visitas guiadas por el mes del aniversario</a></h3>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">El Museo Histórico suma visitas guiadas por el mes de la tradición cordillerana</a></h3>
         </article>
         <article class="nota nota--lista reveal">
-          <span class="volanta v-cultura">PLAYA UNIÓN</span>
-          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Habilitaron nuevos miradores costeros en el camino a la playa</a></h3>
+          <span class="volanta v-cultura">PARQUE NACIONAL</span>
+          <h3 class="nota__titulo"><a href="articulos/plantilla.html">Habilitaron nuevos senderos y miradores en el camino al lago</a></h3>
         </article>
       </div>
       <article class="nota reveal">
         <a class="nota__foto" href="articulos/plantilla.html">
-          <img src="https://picsum.photos/seed/casa-cultura-rawson/900/560" alt="Fachada de la Casa de la Cultura de Rawson" loading="lazy">
+          <img src="https://picsum.photos/seed/casa-cultura-puelo/900/560" alt="Fachada de la Casa de la Cultura de Lago Puelo" loading="lazy">
         </a>
-        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Rawson afina los preparativos para su 161.° aniversario</a></h3>
-        <p class="bajada">El municipio prepara el acto central del 15 de septiembre y una semana de actividades abiertas a toda la comunidad.</p>
+        <h3 class="nota__titulo nota__titulo--mediana"><a href="articulos/plantilla.html">Lago Puelo afina los preparativos para su próximo aniversario cada 15 de enero</a></h3>
+        <p class="bajada">La comuna prepara el acto central y una semana de actividades abiertas a toda la comunidad, con música en vivo y feria de productores.</p>
         <p class="byline"><time datetime="2026-07-29">29 de julio de 2026</time></p>
       </article>
     </div>
@@ -413,8 +413,8 @@
 <footer class="footer" id="contacto">
   <div class="contenedor footer__grid">
     <div class="footer__col footer__col--marca">
-      <p class="footer__nombre">EL FARO<span> de Rawson</span></p>
-      <p>Medio digital dedicado a la actualidad de la capital del Chubut: política provincial, puerto, deportes y cultura.</p>
+      <p class="footer__nombre">EL ANDINO<span> del Puelo</span></p>
+      <p>Medio digital dedicado a la actualidad de Lago Puelo y la Comarca Andina del Paralelo 42: política local, turismo, producción artesanal, deportes de montaña y cultura cordillerana.</p>
       <form class="boletin" id="form-boletin">
         <label for="boletin-mail">Recibí el resumen diario en tu correo</label>
         <div class="boletin__fila">
@@ -429,31 +429,31 @@
       <ul>
         <li><a href="#politica">Política</a></li>
         <li><a href="#policiales">Policiales</a></li>
-        <li><a href="#economia">Economía y Puerto</a></li>
+        <li><a href="#produccion">Turismo y Producción</a></li>
         <li><a href="#deportes">Deportes</a></li>
-        <li><a href="#cultura">Cultura y Turismo</a></li>
+        <li><a href="#cultura">Cultura</a></li>
       </ul>
     </nav>
     <div class="footer__col">
       <h3>Instituciones</h3>
       <ul>
         <li><a href="https://www.chubut.gov.ar" target="_blank" rel="noopener">Gobierno del Chubut</a></li>
-        <li><a href="https://legislaturachubut.gov.ar" target="_blank" rel="noopener">Legislatura del Chubut</a></li>
-        <li><a href="https://www.rawson.gov.ar" target="_blank" rel="noopener">Municipalidad de Rawson</a></li>
+        <li><a href="https://lagopuelo.gob.ar" target="_blank" rel="noopener">Municipalidad de Lago Puelo</a></li>
+        <li><a href="https://www.argentina.gob.ar/parques/lagopuelo" target="_blank" rel="noopener">Parque Nacional Lago Puelo</a></li>
       </ul>
     </div>
     <div class="footer__col">
       <h3>Redacción</h3>
       <ul>
-        <li>📍 Rawson, Chubut, Argentina</li>
-        <li>✉️ redaccion@elfaroderawson.com.ar</li>
-        <li>📱 WhatsApp: (280) 000-0000</li>
+        <li>📍 Lago Puelo, Chubut, Argentina</li>
+        <li>✉️ redaccion@elandinodelpuelo.com.ar</li>
+        <li>📱 WhatsApp: (294) 000-0000</li>
       </ul>
     </div>
   </div>
   <div class="footer__legal">
     <div class="contenedor">
-      <p>© <span id="anio">2026</span> El Faro de Rawson · Todos los derechos reservados · Hecho en la capital del Chubut 🇦🇷</p>
+      <p>© <span id="anio">2026</span> El Andino del Puelo · Todos los derechos reservados · Hecho en la Comarca Andina del Paralelo 42 🇦🇷</p>
     </div>
   </div>
 </footer>
