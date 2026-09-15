@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════
-   EL FARO DE RAWSON — interacciones y datos en vivo
+   EL ANDINO DEL PUELO — interacciones y datos en vivo
    ════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -17,19 +17,20 @@
   setInterval(actualizarFechaHora, 15000);
   const anio = $('#anio'); if (anio) anio.textContent = new Date().getFullYear();
 
-  /* ── Clima real de Rawson (Open-Meteo, gratuita, sin clave) ── */
+  /* ── Clima real de Lago Puelo (Open-Meteo, gratuita, sin clave) ── */
   const CODIGOS = {0:['Despejado','☀️'],1:['Mayormente despejado','🌤️'],2:['Parcialmente nublado','⛅'],3:['Nublado','☁️'],
     45:['Niebla','🌫️'],48:['Niebla','🌫️'],51:['Llovizna','🌦️'],53:['Llovizna','🌦️'],55:['Llovizna','🌧️'],
     61:['Lluvia','🌧️'],63:['Lluvia','🌧️'],65:['Lluvia intensa','🌧️'],71:['Nieve','🌨️'],73:['Nieve','🌨️'],75:['Nieve','🌨️'],
     80:['Chubascos','🌦️'],81:['Chubascos','🌧️'],82:['Chubascos','⛈️'],95:['Tormenta','⛈️'],96:['Tormenta','⛈️'],99:['Tormenta','⛈️']};
   async function cargarClima() {
     try {
-      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-43.30&longitude=-65.10&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto');
+      // Coordenadas de Lago Puelo: -42.07, -71.54
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-42.07&longitude=-71.54&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto');
       if (!r.ok) throw new Error('clima no disponible');
       const d = await r.json(), c = d.current;
       const [txt, ico] = CODIGOS[c.weather_code] || ['—', '🌡️'];
       $('#clima-temp').textContent  = Math.round(c.temperature_2m) + '°C';
-      $('#clima-desc').textContent  = txt + ' · Rawson';
+      $('#clima-desc').textContent  = txt + ' · Lago Puelo';
       $('#clima-viento').textContent = 'Viento: ' + Math.round(c.wind_speed_10m) + ' km/h';
       $('#clima-icono').textContent = ico;
     } catch (e) { /* sin conexión: queda el estado base, no rompe nada */ }
@@ -83,7 +84,7 @@
       e.preventDefault();
       const q = $('#input-buscar').value.trim();
       // ✏️ Reemplazá el dominio por el tuyo cuando publiques
-      if (q) window.open('https://www.google.com/search?q=' + encodeURIComponent('site:elfaroderawson.com.ar ' + q), '_blank');
+      if (q) window.open('https://www.google.com/search?q=' + encodeURIComponent('site:elandinodelpuelo.com.ar ' + q), '_blank');
     });
   }
 
